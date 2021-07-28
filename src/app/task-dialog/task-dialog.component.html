@@ -1,0 +1,24 @@
+<!-- create a dialog form with title and description -->
+<mat-form-field>
+    <mat-label>Please add a Title</mat-label>
+    <input matInput cdkFocusInitial [(ngModel)]="data.task.title" />
+  </mat-form-field>
+  
+  <mat-form-field>
+    <mat-label>Add Description</mat-label>
+    <textarea matInput [(ngModel)]="data.task.description"></textarea>
+  </mat-form-field>
+  
+  <div mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="{ task: data.task }">Add To Do</button>
+    <button mat-button (click)="cancel()">Cancel</button>
+    <!-- delete task button -->
+    <button
+    *ngIf="data.enableDelete"
+    mat-fab
+    color="primary"
+    aria-label="Delete"
+    [mat-dialog-close]="{ task: data.task, delete: true }">
+    <mat-icon>delete</mat-icon>
+  </button>
+  </div>
